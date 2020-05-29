@@ -35,6 +35,9 @@ task('sw:theme:compile', function(){
 task('sw:cache:clear', function(){
     run('cd {{release_path}} && bin/console cache:clear;');
 });
+task('sw:assets:install', function(){
+    run('cd {{release_path}} && bin/console assets:install;');
+});
 /**
  * Main task
  */
@@ -47,6 +50,7 @@ task('deploy', [
     'deploy:shared',
     'deploy:writable',
     'sw:theme:compile',
+    'sw:assets:install',
     'sw:cache:clear',
     'deploy:clear_paths',
     'deploy:symlink',
